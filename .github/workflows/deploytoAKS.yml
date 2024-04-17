@@ -39,7 +39,7 @@ jobs:
       run: dotnet build -c release
     
     - name: docker build
-      run: docker build -t hello-world-app:${{github.sha}} .
+      run: docker build -t devbaam.azurecr.io/workspace-mdb-1997/hello-world-app:${{github.sha}} .
 
     - name: Azure Kubernetes set context
       uses: Azure/aks-set-context@v1
@@ -76,7 +76,7 @@ jobs:
           k8s/deployment.yml
           k8s/service.yml
         # Fully qualified resource URL of the image(s) to be used for substitutions on the manifest files Example: contosodemo.azurecr.io/helloworld:test
-        images: 'devbaam.azurecr.io/hello-world-app:${{github.sha}}'
+        images: 'devbaam.azurecr.io/workspace-mdb-1997/hello-world-app:${{github.sha}}'
         # Name of a docker-registry secret that has already been set up within the cluster. Each of these secret names are added under imagePullSecrets field for the workloads found in the input manifest files 
         imagepullsecrets: docker-image-pull-secret
         # deploy/promote/reject
