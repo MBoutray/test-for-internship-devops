@@ -39,7 +39,7 @@ jobs:
       run: dotnet build -c release
     
     - name: docker build
-      run: docker build -t hello-world-app:'${{github.sha}}' 
+      run: docker build -t hello-world-app:${{github.sha}} .
 
     - name: Azure Kubernetes set context
       uses: Azure/aks-set-context@v1
